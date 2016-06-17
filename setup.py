@@ -38,6 +38,6 @@ setup(name='semantic',
       install_requires=requires,
       tests_require=requires,
       cmdclass={'test': PyTest},
-      long_description=open('README.txt').read(),
+      long_description=open('README.txt', encoding='utf-8').read(),
       packages=['semantic', 'semantic.test']
       )

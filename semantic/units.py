@@ -1,6 +1,6 @@
 import re
 import quantities as pq
-from numbers import NumberService
+from .numbers import NumberService
 
 
 class ConversionService(object):

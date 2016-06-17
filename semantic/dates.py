@@ -1,7 +1,7 @@
 import re
 import datetime
-from itertools import izip_longest
-from numbers import NumberService
+from itertools import zip_longest
+from .numbers import NumberService
 
 
 class DateService(object):
@@ -357,7 +357,8 @@ class DateService(object):
             A list of datetime objects containing the extracted dates from the
             input snippet, or an empty list if not found.
         """
-        def merge((day, time)):
+        def merge(daytime):
+            day, time = daytime
             if not (day or time):
                 return None
 
@@ -372,7 +373,7 @@ class DateService(object):
 
         days = self.extractDays(input)
         times = self.extractTimes(input)
-        return map(merge, izip_longest(days, times, fillvalue=None))
+        return list(map(merge, zip_longest(days, times, fillvalue=None)))
 
     def extractDate(self, input):
         """Returns the first date found in the input string, or None if not

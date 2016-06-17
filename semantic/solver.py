@@ -1,7 +1,7 @@
 import re
 from math import sqrt, sin, cos, log, tan, acos, asin, atan, e, pi
-from operator import add, sub, div, mul, pow
-from numbers import NumberService
+from operator import add, sub, truediv, mul, pow
+from .numbers import NumberService
 
 
 class MathService(object):
@@ -42,8 +42,8 @@ class MathService(object):
         'sub': sub,
         'subtract': sub,
         'less': sub,
-        'over': div,
-        'divide': div,
+        'over': truediv,
+        'divide': truediv,
         'times': mul,
         'multiply': mul,
         'to': pow
@@ -126,7 +126,7 @@ class MathService(object):
         if len(numbers) is 1:
             return numbers[0]
 
-        precedence = [[pow], [mul, div], [add, sub]]
+        precedence = [[pow], [mul, truediv], [add, sub]]
 
         # Find most important operation
         for op_group in precedence:
